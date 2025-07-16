@@ -39,7 +39,7 @@ A web-based dashboard for visualizing and monitoring DarkBERT model performance 
 
 4. **Start the backend**
    ```bash
-   uvicorn app.main:app --reload
+   uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
    ```
 
 5. **Install and run the frontend**
