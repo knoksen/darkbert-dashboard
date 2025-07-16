@@ -23,7 +23,7 @@ Copy the example environment file and add your HuggingFace token:
 
 ```bash
 cp .env.example .env
-# edit .env and set HUGGINGFACE_HUB_TOKEN
+# edit .env and set HUGGINGFACE_HUB_TOKEN, e.g., HUGGINGFACE_HUB_TOKEN=your_token_here
 ```
 
 Start the frontend development server:
