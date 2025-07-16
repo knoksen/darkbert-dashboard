@@ -26,8 +26,17 @@ A web-based dashboard for visualizing and monitoring DarkBERT model performance 
    cd darkbert-dashboard
    ```
 
-2. **Install backend dependencies**
+2. **Set up a virtual environment and install backend dependencies**
    ```bash
+   # Create and activate a virtual environment (Linux/macOS)
+   python -m venv venv
+   source venv/bin/activate
+   
+   # For Windows
+   python -m venv venv
+   venv\Scripts\activate
+   
+   # Install dependencies
    pip install -r requirements.txt
    ```
 
