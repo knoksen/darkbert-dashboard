@@ -2,25 +2,34 @@
 
 A web-based dashboard for visualizing and monitoring DarkBERT model performance and outputs.
 
-## 🚀 Features
+## Tech Stack
 
-- **Model Metrics**: Track training/validation loss and accuracy over time  
-- **Confusion Matrix**: Visualize per-class performance  
-- **Embeddings Explorer**: Project and inspect hidden-layer embeddings with t-SNE or UMAP  
-- **Inference Panel**: Paste text and see DarkBERT predictions in real time  
-- **Dark Mode UI**: Sleek, dark-themed interface for comfortable long-term usage
+- **Frontend**: React (Vite + Tailwind CSS)
+- **Backend**: FastAPI (Python)
+- **Data Storage**: SQLite / Postgres (configurable)
+- **Visualization**: Chart.js, Plotly
+- **Containerization**: Docker & Docker Compose
 
-## 🛠️ Tech Stack
+## Getting Started
 
-- **Frontend**: React + Tailwind CSS  
-- **Backend**: FastAPI (Python)  
-- **Data Storage**: SQLite / Postgres (configurable)  
-- **Visualization**: Chart.js, Plotly  
-- **Containerization**: Docker & Docker Compose  
+Install Node dependencies and start the development server:
 
-## 🚧 Getting Started
+```bash
+npm install
+npm run dev
+```
 
-1. **Clone the repo**  
-   ```bash
-   git clone https://github.com/knoksen/darkbert-dashboard.git
-   cd darkbert-dashboard
+Run the API with:
+
+```bash
+uvicorn app.main:app --reload
+```
+
+### Docker Compose
+
+Build and start both services:
+
+```bash
+docker-compose up --build
+```
+
