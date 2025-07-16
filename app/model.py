@@ -1,4 +1,4 @@
-﻿import os
+import os
 from dotenv import load_dotenv
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, AutoModel
 import torch

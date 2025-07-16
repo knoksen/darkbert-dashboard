@@ -1,4 +1,4 @@
-﻿import React from 'react'
+import React from 'react'
 import DashboardChart from '@/components/DashboardChart'
 
 export default function Dashboard() {

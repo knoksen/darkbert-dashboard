@@ -1,4 +1,4 @@
-﻿import React from 'react'
+import React from 'react'
 import { AppBar, Toolbar, Typography, IconButton } from '@mui/material'
 import { DarkMode, LightMode } from '@mui/icons-material'
 import useDarkMode from 'use-dark-mode'

@@ -1,4 +1,4 @@
-﻿<engine:UIDocument
+<engine:UIDocument
     xmlns:ui=""UnityEngine.UIElements""
     xmlns:uie=""UnityEditor.UIElements""
     xmlns:engine=""UnityEngine.UIElements"">

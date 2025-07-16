@@ -1,4 +1,4 @@
-﻿from fastapi import FastAPI
+from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List
 from .model import predict, get_embedding, reduce_embeddings

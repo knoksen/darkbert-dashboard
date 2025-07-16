@@ -1,4 +1,4 @@
-﻿import { useQuery } from 'react-query'
+import { useQuery } from 'react-query'
 import { fetchMetrics } from '@/services/api'
 
 export default function useMetrics() {

@@ -1,4 +1,4 @@
-﻿module.exports = {
+module.exports = {
   plugins: {
     // The new Tailwind PostCSS plugin (wraps the core tailwindcss logic)
     '@tailwindcss/postcss': {},
