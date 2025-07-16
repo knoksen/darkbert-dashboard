@@ -57,3 +57,22 @@ Make sure you have created a `.env` file containing at least `MODEL_NAME` and
 docker-compose up --build
 ```
 
+
+## Unity Desktop App
+
+A minimal Unity project is provided in the `Assets` folder. It contains a
+`DashboardController` script under `Assets/Scripts` and the UI layout in
+`Assets/UI`. An example configuration file `Assets/StreamingAssets/backend_config.json`
+controls which backend the desktop build communicates with.
+
+To change the backend URL edit the JSON file and set the `base_url` value or set
+`PlayerPrefs` key `backend_url` at runtime.
+
+To build the desktop app for Windows 10:
+
+1. Open the Unity editor.
+2. Import the `Assets` folder from this repository.
+3. Modify the backend URL in the configuration file if needed.
+4. Choose build target **PC, Mac & Linux Standalone → Windows** and build.
+
+
