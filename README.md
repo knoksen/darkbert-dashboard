@@ -10,6 +10,16 @@ A web-based dashboard for visualizing and monitoring DarkBERT model performance 
 - **Visualization**: Chart.js, Plotly
 - **Containerization**: Docker & Docker Compose
 
+## Usage Disclaimer
+
+The `knoksen/darkbert-approved` model is trained on data collected from the dark
+web. You can find more details on the model card at
+[Hugging Face](https://huggingface.co/knoksen/darkbert-approved) along with the
+license (currently Apache 2.0). Because of the nature of its training data,
+use of the model may have ethical or legal implications depending on your
+jurisdiction and intended purpose. Review the license and model card before
+deploying it in production.
+
 ## Getting Started
 
 Install the frontend and backend dependencies:
@@ -40,7 +50,8 @@ uvicorn app.main:app --reload
 
 ### Docker Compose
 
-Build and start both services:
+Make sure you have created a `.env` file containing at least `MODEL_NAME` and
+`HUGGINGFACE_HUB_TOKEN` and then build and start both services:
 
 ```bash
 docker-compose up --build
