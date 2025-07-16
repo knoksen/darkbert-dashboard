@@ -69,9 +69,15 @@ public class DashboardController : MonoBehaviour
             confusionText.text = req.downloadHandler.text;
     }
 
+    [System.Serializable]
+    class PredictRequest
+    {
+        public string text;
+    }
+
     IEnumerator Predict(string text)
     {
-        var payload = JsonUtility.ToJson(new { text });
+        var payload = JsonUtility.ToJson(new PredictRequest { text = text });
         using var req = new UnityWebRequest(baseUrl + "/predict", "POST");
         byte[] body = System.Text.Encoding.UTF8.GetBytes(payload);
         req.uploadHandler = new UploadHandlerRaw(body);
