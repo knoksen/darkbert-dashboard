@@ -1,0 +1,17 @@
+﻿<engine:UIDocument
+    xmlns:ui=""UnityEngine.UIElements""
+    xmlns:uie=""UnityEditor.UIElements""
+    xmlns:engine=""UnityEngine.UIElements"">
+  <ui:VisualElement style=""flex-direction: column; padding: 10;"">
+    <ui:Label text=""DarkBERT Dashboard"" style=""unity-font-size:24; color:white;"" />
+    <ui:ScrollView style=""height:200; background-color:#374151; margin-top:10;"">
+      <ui:Label name=""metricsText"" text=""Loading metrics..."" />
+    </ui:ScrollView>
+    <ui:ScrollView style=""height:200; background-color:#374151; margin-top:10;"">
+      <ui:Label name=""confusionText"" text=""Loading confusion..."" />
+    </ui:ScrollView>
+    <ui:TextField name=""inferenceInput"" multiline=""true"" style=""height:60; margin-top:10;"" />
+    <ui:Button text=""Predict"" name=""predictBtn"" style=""margin-top:5;"" />
+    <ui:Label name=""inferenceOutput"" text="""" style=""margin-top:5;"" />
+  </ui:VisualElement>
+</engine:UIDocument>

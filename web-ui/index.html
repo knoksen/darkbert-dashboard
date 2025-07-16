@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DarkBERT Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { background: #1f2937; color: #fff; font-family: sans-serif; padding: 1rem; }
+    .panel { background: #374151; padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem; }
+    textarea { width:100%; height:4rem; }
+    button { background:#10b981; color:#fff; border:none; padding:0.5rem 1rem; cursor:pointer; }
+  </style>
+</head>
+<body>
+  <h1>DarkBERT Dashboard</h1>
+
+  <div class="panel">
+    <h2>Metrics</h2>
+    <canvas id="metricsChart"></canvas>
+  </div>
+
+  <div class="panel">
+    <h2>Confusion Matrix</h2>
+    <table id="confusionTable" border="1" cellpadding="4"></table>
+  </div>
+
+  <div class="panel">
+    <h2>Embeddings Explorer</h2>
+    <textarea id="embTexts" placeholder="One sentence per line"></textarea><br>
+    <button id="runTsne">Run t-SNE</button>
+    <canvas id="embedChart"></canvas>
+  </div>
+
+  <div class="panel">
+    <h2>Inference</h2>
+    <textarea id="inText" placeholder="Type text here"></textarea><br>
+    <button id="predictBtn">Predict</button>
+    <pre id="inResult"></pre>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
