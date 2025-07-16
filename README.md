@@ -33,3 +33,7 @@ Build and start both services:
 docker-compose up --build
 ```
 
+
+## Model Disclaimer
+
+The dashboard relies on the [`knoksen/darkbert-approved`](https://huggingface.co/knoksen/darkbert-approved) language model. This model was trained on text sourced from the dark web and may contain illegal, harmful, or disturbing content. Ensure you understand and comply with all legal and ethical obligations before using DarkBERT. Review the license and terms on the model's Hugging Face page for additional details.
