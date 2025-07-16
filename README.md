@@ -20,7 +20,41 @@ A web-based dashboard for visualizing and monitoring DarkBERT model performance 
 
 ## 🚧 Getting Started
 
-1. **Clone the repo**  
+1. **Clone the repo**
    ```bash
    git clone https://github.com/knoksen/darkbert-dashboard.git
    cd darkbert-dashboard
+   ```
+
+2. **Install backend dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Create a `.env` file**
+   ```bash
+   cp .env.example .env
+   # adjust MODEL_NAME or other settings if needed
+   ```
+
+4. **Start the backend**
+   ```bash
+   uvicorn app.main:app --reload
+   ```
+
+5. **Install and run the frontend**
+   ```bash
+   cd frontend
+   npm install
+   npm start
+   ```
+
+The frontend will open at http://localhost:3000 and communicate with the FastAPI
+server running on port 8000.
+
+## 📈 Usage
+
+- Visit `http://localhost:3000` to view the dashboard.
+- Check the **Metrics** panel for loss and accuracy curves.
+- Use the **Embeddings Explorer** to visualize text embeddings.
+- Try out predictions in the **Inference** panel.
