@@ -29,11 +29,14 @@ npm install
 pip install -r requirements.txt
 ```
 
-Copy the example environment file and add your HuggingFace token:
+Copy the example environment file and update the environment variables:
 
 ```bash
 cp .env.example .env
-# edit .env and set HUGGINGFACE_HUB_TOKEN, e.g., HUGGINGFACE_HUB_TOKEN=your_token_here
+# edit .env and set values such as
+# HUGGINGFACE_HUB_TOKEN=your_token_here
+# VITE_API_BASE_URL=http://localhost:8000
+# VITE_DARK_MODE=false
 ```
 
 Start the frontend development server:
@@ -50,8 +53,7 @@ uvicorn app.main:app --reload
 
 ### Docker Compose
 
-Make sure you have created a `.env` file containing at least `MODEL_NAME` and
-`HUGGINGFACE_HUB_TOKEN` and then build and start both services:
+Make sure you have created a `.env` file containing at least `MODEL_NAME`, `HUGGINGFACE_HUB_TOKEN`, `VITE_API_BASE_URL` and `VITE_DARK_MODE` and then build and start both services:
 
 ```bash
 docker-compose up --build
