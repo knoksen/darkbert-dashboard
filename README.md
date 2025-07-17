@@ -7,7 +7,7 @@ A web-based dashboard for visualizing and monitoring DarkBERT model performance 
 - **Frontend**: React (Vite + Tailwind CSS)
 - **Backend**: FastAPI (Python)
 - **Data Storage**: SQLite / Postgres (configurable)
-- **Visualization**: Chart.js, Plotly
+- **Visualization**: Recharts
 - **Containerization**: Docker & Docker Compose
 
 ## Usage Disclaimer
