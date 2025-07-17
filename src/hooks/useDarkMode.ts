@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react'
 
 export default function useDarkMode(initial = false) {
-  const [enabled, setEnabled] = useState(initial)
+  const [enabled, setEnabled] = useState(() => {
+    const storedPreference = localStorage.getItem('dark-mode')
+    return storedPreference !== null ? JSON.parse(storedPreference) : initial
+  })
 
   useEffect(() => {
     const className = 'dark'
