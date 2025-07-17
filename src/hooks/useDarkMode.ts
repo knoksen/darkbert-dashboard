@@ -7,12 +7,14 @@ export default function useDarkMode(initial = false) {
   })
 
   useEffect(() => {
-    const className = 'dark'
-    const element = window.document.body
-    if (enabled) {
-      element.classList.add(className)
-    } else {
-      element.classList.remove(className)
+    if (typeof window !== 'undefined') {
+      const className = 'dark'
+      const element = window.document.body
+      if (enabled) {
+        element.classList.add(className)
+      } else {
+        element.classList.remove(className)
+      }
     }
   }, [enabled])
 
