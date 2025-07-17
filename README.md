@@ -100,3 +100,7 @@ The backend URL is loaded in the following order:
 3. `http://localhost:8000` as a fallback.
 
 
+
+## Advanced Structure and Deployment
+
+For a detailed example of scaffolding the project and deploying with Docker, see [docs/advanced_structure_and_deployment.md](docs/advanced_structure_and_deployment.md).
