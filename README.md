@@ -75,4 +75,20 @@ To build the desktop app for Windows 10:
 3. Modify the backend URL in the configuration file if needed.
 4. Choose build target **PC, Mac & Linux Standalone → Windows** and build.
 
+### Building From Source
+
+The Unity project contains only the assets. After importing, create an empty
+scene and drop the `DashboardController` on to a `GameObject`. Assign the UI
+elements from `Dashboard.uxml` to the script fields through the inspector. Make
+sure `backend_config.json` resides under `StreamingAssets` so the runtime can
+resolve the backend URL.
+
+#### Configuration
+
+The backend URL is loaded in the following order:
+
+1. The `backend_url` `PlayerPrefs` key if present.
+2. `Assets/StreamingAssets/backend_config.json` with a `base_url` field.
+3. `http://localhost:8000` as a fallback.
+
 
