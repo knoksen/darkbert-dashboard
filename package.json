@@ -21,8 +21,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.0",
     "recharts": "^2.3.2",
-    "react-query": "^3.39.3",
-    "use-dark-mode": "^2.3.1"
+    "react-query": "^3.39.3"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.3",
