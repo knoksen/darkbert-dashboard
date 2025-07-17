@@ -43,7 +43,10 @@ A web-based dashboard for visualizing and monitoring DarkBERT model performance 
 3. **Create a `.env` file**
    ```bash
    cp .env.example .env
-   # adjust MODEL_NAME or other settings if needed
+   # Update the `.env` file:
+   # - Set `MODEL_NAME` to the name of the model you want to use (required).
+   # - Adjust database settings (e.g., `DB_URL`) if not using the default SQLite (optional).
+   # - Configure other settings as needed for your environment.
    ```
 
 4. **Start the backend**
