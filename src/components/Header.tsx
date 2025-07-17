@@ -1,7 +1,7 @@
 ﻿import React from 'react'
 import { AppBar, Toolbar, Typography, IconButton } from '@mui/material'
 import { DarkMode, LightMode } from '@mui/icons-material'
-import useDarkMode from 'use-dark-mode'
+import useDarkMode from '@/hooks/useDarkMode'
 
 const Header: React.FC = () => {
   const darkMode = useDarkMode(false)
