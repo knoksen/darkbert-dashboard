@@ -53,8 +53,14 @@ uvicorn app.main:app --reload
 
 ### Docker Compose
 
-Make sure you have created a `.env` file containing at least `MODEL_NAME`, `HUGGINGFACE_HUB_TOKEN`, `VITE_API_BASE_URL` and `VITE_DARK_MODE` and then build and start both services:
+Make sure you have created a `.env` file containing the following variables:
 
+- `MODEL_NAME`
+- `HUGGINGFACE_HUB_TOKEN`
+- `VITE_API_BASE_URL`
+- `VITE_DARK_MODE`
+
+Then, build and start both services:
 ```bash
 docker-compose up --build
 ```
