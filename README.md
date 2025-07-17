@@ -58,8 +58,8 @@ A web-based dashboard for visualizing and monitoring DarkBERT model performance 
    npm start
    ```
 
-The frontend will open at http://localhost:3000 and communicate with the FastAPI
-server running on port 8000.
+The frontend should open at http://localhost:3000 and communicate with the FastAPI
+server running on port 8000. If it does not open automatically, please navigate to the URL manually.
 
 ## 📈 Usage
 
