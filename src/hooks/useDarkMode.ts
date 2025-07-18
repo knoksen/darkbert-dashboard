@@ -18,7 +18,7 @@ export default function useDarkMode(initial = false) {
     }
   }, [enabled])
 
-  const toggle = () => setEnabled((prev: boolean) => !prev)
+  const toggle = () => setEnabled((prev) => !prev)
 
   return { enabled, toggle }
 }
