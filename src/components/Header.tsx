@@ -12,7 +12,7 @@ const Header: React.FC = () => {
           DarkBERT Dashboard
         </Typography>
         <IconButton onClick={darkMode.toggle}>
-          {darkMode.value ? <LightMode /> : <DarkMode />}
+          {darkMode.enabled ? <LightMode /> : <DarkMode />}
         </IconButton>
       </Toolbar>
     </AppBar>
