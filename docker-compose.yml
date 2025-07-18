@@ -15,5 +15,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile.frontend
+    # The frontend is served by Nginx on port 80 inside the container.
+    # It is mapped to port 3000 on the host machine.
     ports:
       - "3000:80"
