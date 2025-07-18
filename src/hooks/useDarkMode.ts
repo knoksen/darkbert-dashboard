@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 export default function useDarkMode(initial = false) {
-  const [enabled, setEnabled] = useState(() => {
+  const [enabled, setEnabled] = useState<boolean>(() => {
     const storedPreference = localStorage.getItem('dark-mode')
     return storedPreference !== null ? JSON.parse(storedPreference) : initial
   })
@@ -18,7 +18,7 @@ export default function useDarkMode(initial = false) {
     }
   }, [enabled])
 
-  const toggle = () => setEnabled((prev) => !prev)
+  const toggle = () => setEnabled((prev: boolean) => !prev)
 
   return { enabled, toggle }
 }
