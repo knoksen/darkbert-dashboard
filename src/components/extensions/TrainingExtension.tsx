@@ -172,6 +172,6 @@ const TrainingExtension: React.FC = () => {
       </Grid>
     </Box>
   );
-+};
+};
 
 export default TrainingExtension;
