@@ -14,7 +14,6 @@ import {
   Stop,
   Settings,
   Speed,
-  TrendingUp,
 } from "@mui/icons-material";
 import ModernCard from "@/components/ui/ModernCard";
 
@@ -36,7 +35,7 @@ interface TrainingSession {
 }
 
 const TrainingExtension: React.FC = () => {
-  const [sessions, setSessions] = useState<TrainingSession[]>([
+  const [sessions] = useState<TrainingSession[]>([
     {
       id: "1",
       name: "DarkBERT Training Session #1",

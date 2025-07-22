@@ -6,8 +6,5 @@ export default function useMetrics(): UseQueryResult<MetricsData, Error> {
     staleTime: 60000,
     retry: 2,
     refetchOnWindowFocus: true,
-    onError: (error) => {
-      console.error("Error fetching metrics:", error);
-    },
   });
 }

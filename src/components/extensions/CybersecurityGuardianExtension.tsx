@@ -143,8 +143,6 @@ const CybersecurityGuardianExtension: React.FC = () => {
     },
   ];
 
-  // Removed unused getSeverityColor function
-
   return (
     <Box className="p-6 space-y-6">
       <Typography
