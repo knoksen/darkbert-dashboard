@@ -1,7 +1,22 @@
-import React, { useState } from 'react';
-import { Box, Typography, Grid, Card, CardContent, LinearProgress, Button } from '@mui/material';
-import { PlayArrow, Pause, Stop, Settings, Speed, TrendingUp } from '@mui/icons-material';
-import ModernCard from '@/components/ui/ModernCard';
+import React, { useState } from "react";
+import {
+  Box,
+  Typography,
+  Grid,
+  Card,
+  CardContent,
+  LinearProgress,
+  Button,
+} from "@mui/material";
+import {
+  PlayArrow,
+  Pause,
+  Stop,
+  Settings,
+  Speed,
+  TrendingUp,
+} from "@mui/icons-material";
+import ModernCard from "@/components/ui/ModernCard";
 
 interface TrainingMetrics {
   epoch: number;
@@ -14,7 +29,7 @@ interface TrainingMetrics {
 interface TrainingSession {
   id: string;
   name: string;
-  status: 'running' | 'paused' | 'completed';
+  status: "running" | "paused" | "completed";
   progress: number;
   metrics: TrainingMetrics[];
   startTime: string;
@@ -23,22 +38,43 @@ interface TrainingSession {
 const TrainingExtension: React.FC = () => {
   const [sessions, setSessions] = useState<TrainingSession[]>([
     {
-      id: '1',
-      name: 'DarkBERT Training Session #1',
-      status: 'running',
+      id: "1",
+      name: "DarkBERT Training Session #1",
+      status: "running",
       progress: 75,
       metrics: [
-        { epoch: 1, loss: 0.45, accuracy: 0.89, val_loss: 0.42, val_accuracy: 0.87 },
-        { epoch: 2, loss: 0.38, accuracy: 0.92, val_loss: 0.35, val_accuracy: 0.91 },
-        { epoch: 3, loss: 0.32, accuracy: 0.94, val_loss: 0.31, val_accuracy: 0.93 },
+        {
+          epoch: 1,
+          loss: 0.45,
+          accuracy: 0.89,
+          val_loss: 0.42,
+          val_accuracy: 0.87,
+        },
+        {
+          epoch: 2,
+          loss: 0.38,
+          accuracy: 0.92,
+          val_loss: 0.35,
+          val_accuracy: 0.91,
+        },
+        {
+          epoch: 3,
+          loss: 0.32,
+          accuracy: 0.94,
+          val_loss: 0.31,
+          val_accuracy: 0.93,
+        },
       ],
-      startTime: '2024-01-15T10:00:00Z',
+      startTime: "2024-01-15T10:00:00Z",
     },
   ]);
 
   return (
     <Box className="p-6 space-y-6">
-      <Typography variant="h4" className="font-bold text-gray-800 dark:text-white">
+      <Typography
+        variant="h4"
+        className="font-bold text-gray-800 dark:text-white"
+      >
         Training Extension
       </Typography>
 
@@ -54,7 +90,9 @@ const TrainingExtension: React.FC = () => {
                     <Button
                       size="small"
                       startIcon={<PlayArrow />}
-                      color={session.status === 'running' ? 'success' : 'primary'}
+                      color={
+                        session.status === "running" ? "success" : "primary"
+                      }
                     >
                       {session.status}
                     </Button>
@@ -68,8 +106,13 @@ const TrainingExtension: React.FC = () => {
                 </Box>
 
                 <Box className="space-y-2">
-                  <Typography variant="body2">Progress: {session.progress}%</Typography>
-                  <LinearProgress value={session.progress} variant="determinate" />
+                  <Typography variant="body2">
+                    Progress: {session.progress}%
+                  </Typography>
+                  <LinearProgress
+                    value={session.progress}
+                    variant="determinate"
+                  />
                 </Box>
 
                 <Grid container spacing={2}>
@@ -80,10 +123,18 @@ const TrainingExtension: React.FC = () => {
                           Training Metrics
                         </Typography>
                         <Typography variant="body2">
-                          Loss: {session.metrics[session.metrics.length - 1]?.loss.toFixed(3)}
+                          Loss:{" "}
+                          {session.metrics[
+                            session.metrics.length - 1
+                          ]?.loss.toFixed(3)}
                         </Typography>
                         <Typography variant="body2">
-                          Accuracy: {(session.metrics[session.metrics.length - 1]?.accuracy * 100).toFixed(1)}%
+                          Accuracy:{" "}
+                          {(
+                            session.metrics[session.metrics.length - 1]
+                              ?.accuracy * 100
+                          ).toFixed(1)}
+                          %
                         </Typography>
                       </CardContent>
                     </Card>
@@ -95,10 +146,18 @@ const TrainingExtension: React.FC = () => {
                           Validation Metrics
                         </Typography>
                         <Typography variant="body2">
-                          Val Loss: {session.metrics[session.metrics.length - 1]?.val_loss.toFixed(3)}
+                          Val Loss:{" "}
+                          {session.metrics[
+                            session.metrics.length - 1
+                          ]?.val_loss.toFixed(3)}
                         </Typography>
                         <Typography variant="body2">
-                          Val Accuracy: {(session.metrics[session.metrics.length - 1]?.val_accuracy * 100).toFixed(1)}%
+                          Val Accuracy:{" "}
+                          {(
+                            session.metrics[session.metrics.length - 1]
+                              ?.val_accuracy * 100
+                          ).toFixed(1)}
+                          %
                         </Typography>
                       </CardContent>
                     </Card>

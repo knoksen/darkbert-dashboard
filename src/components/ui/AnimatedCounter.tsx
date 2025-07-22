@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Typography } from '@mui/material';
+import React, { useEffect, useState } from "react";
+import { Typography } from "@mui/material";
 
 interface AnimatedCounterProps {
   value: number;
@@ -12,8 +12,8 @@ interface AnimatedCounterProps {
 const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
   value,
   duration = 2000,
-  prefix = '',
-  suffix = '',
+  prefix = "",
+  suffix = "",
   className,
 }) => {
   const [count, setCount] = useState(0);
@@ -21,16 +21,29 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
   useEffect(() => {
     let start = 0;
     const end = value;
-    if (start === end) return;
 
-    const incrementTime = (duration / end) * 10;
+    if (start === end) {
+      setCount(end);
+      return;
+    }
+
+    const incrementTime = Math.max(16, duration / Math.abs(end - start));
+    const step = Math.max(
+      1,
+      Math.ceil(Math.abs(end - start) / (duration / incrementTime))
+    );
+
     const timer = setInterval(() => {
-      start += Math.ceil(end / (duration / 10));
-      if (start > end) {
-        setCount(end);
-        clearInterval(timer);
+      if (start < end) {
+        start = Math.min(start + step, end);
       } else {
-        setCount(start);
+        start = Math.max(start - step, end);
+      }
+
+      setCount(start);
+
+      if (start === end) {
+        clearInterval(timer);
       }
     }, incrementTime);
 
@@ -39,7 +52,9 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
 
   return (
     <Typography className={className}>
-      {prefix}{count.toLocaleString()}{suffix}
+      {prefix}
+      {Math.round(count).toLocaleString()}
+      {suffix}
     </Typography>
   );
 };

@@ -1,14 +1,19 @@
-﻿import React from 'react'
-import { AppBar, Toolbar, Typography, IconButton } from '@mui/material'
-import { DarkMode, LightMode } from '@mui/icons-material'
-import useDarkMode from '@/hooks/useDarkMode'
+﻿import React from "react";
+import { AppBar, Toolbar, Typography, IconButton } from "@mui/material";
+import { DarkMode, LightMode } from "@mui/icons-material";
+import useDarkMode from "@/hooks/useDarkMode";
 
 const Header: React.FC = () => {
-  const darkMode = useDarkMode(false)
+  const darkMode = useDarkMode(false);
   return (
-    <AppBar position='static' color='transparent' elevation={1} className='shadow-sm'>
+    <AppBar
+      position="static"
+      color="transparent"
+      elevation={1}
+      className="shadow-sm"
+    >
       <Toolbar>
-        <Typography variant='h6' className='flex-grow'>
+        <Typography variant="h6" className="flex-grow">
           DarkBERT Dashboard
         </Typography>
         <IconButton onClick={darkMode.toggle}>
@@ -16,7 +21,7 @@ const Header: React.FC = () => {
         </IconButton>
       </Toolbar>
     </AppBar>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

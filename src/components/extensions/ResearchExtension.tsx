@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Box, Typography, TextField, Button, Chip, Grid } from '@mui/material';
-import { Search, Description, Download, Share } from '@mui/icons-material';
-import ModernCard from '@/components/ui/ModernCard';
+import React, { useState } from "react";
+import { Box, Typography, TextField, Button, Chip, Grid } from "@mui/material";
+import { Search, Description, Download, Share } from "@mui/icons-material";
+import ModernCard from "@/components/ui/ModernCard";
 
 interface ResearchResult {
   id: string;
@@ -13,34 +13,37 @@ interface ResearchResult {
 }
 
 const ResearchExtension: React.FC = () => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [isSearching, setIsSearching] = useState(false);
   const [results, setResults] = useState<ResearchResult[]>([]);
 
   const mockResults: ResearchResult[] = [
     {
-      id: '1',
-      title: 'Dark Web Threat Intelligence Report Q4 2024',
-      summary: 'Comprehensive analysis of emerging threats in dark web marketplaces, focusing on ransomware-as-a-service trends.',
+      id: "1",
+      title: "Dark Web Threat Intelligence Report Q4 2024",
+      summary:
+        "Comprehensive analysis of emerging threats in dark web marketplaces, focusing on ransomware-as-a-service trends.",
       confidence: 94.7,
-      source: 'DarkBERT AI',
-      timestamp: '2 hours ago',
+      source: "DarkBERT AI",
+      timestamp: "2 hours ago",
     },
     {
-      id: '2',
-      title: 'Cryptocurrency Laundering Patterns',
-      summary: 'Advanced detection of cryptocurrency mixing services and laundering techniques using ML models.',
+      id: "2",
+      title: "Cryptocurrency Laundering Patterns",
+      summary:
+        "Advanced detection of cryptocurrency mixing services and laundering techniques using ML models.",
       confidence: 89.3,
-      source: 'Blockchain Analysis',
-      timestamp: '5 hours ago',
+      source: "Blockchain Analysis",
+      timestamp: "5 hours ago",
     },
     {
-      id: '3',
-      title: 'Underground Forum Activity Analysis',
-      summary: 'Real-time monitoring of underground forums and marketplaces for threat actor communications.',
+      id: "3",
+      title: "Underground Forum Activity Analysis",
+      summary:
+        "Real-time monitoring of underground forums and marketplaces for threat actor communications.",
       confidence: 91.8,
-      source: 'Forum Intelligence',
-      timestamp: '1 day ago',
+      source: "Forum Intelligence",
+      timestamp: "1 day ago",
     },
   ];
 
@@ -54,7 +57,10 @@ const ResearchExtension: React.FC = () => {
 
   return (
     <Box className="p-6 space-y-6">
-      <Typography variant="h4" className="font-bold text-gray-800 dark:text-white">
+      <Typography
+        variant="h4"
+        className="font-bold text-gray-800 dark:text-white"
+      >
         Research Extension
       </Typography>
 
@@ -67,7 +73,7 @@ const ResearchExtension: React.FC = () => {
             placeholder="Enter research query..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
+            onKeyPress={(e) => e.key === "Enter" && handleSearch()}
             InputProps={{
               startAdornment: <Search className="mr-2 text-gray-400" />,
             }}
@@ -79,7 +85,7 @@ const ResearchExtension: React.FC = () => {
               disabled={isSearching || !query}
               className="bg-blue-600 hover:bg-blue-700"
             >
-              {isSearching ? 'Searching...' : 'Search'}
+              {isSearching ? "Searching..." : "Search"}
             </Button>
             <Button variant="outlined">Advanced Filters</Button>
           </Box>
@@ -90,20 +96,26 @@ const ResearchExtension: React.FC = () => {
       <Grid container spacing={3}>
         {results.map((result) => (
           <Grid item xs={12} key={result.id}>
-            <ModernCard glass>
+            <ModernCard>
               <Box className="space-y-3">
                 <Box className="flex items-start justify-between">
-                  <Typography variant="h6" className="font-semibold text-gray-800 dark:text-white">
+                  <Typography
+                    variant="h6"
+                    className="font-semibold text-gray-800 dark:text-white"
+                  >
                     {result.title}
                   </Typography>
                   <Chip
                     label={`${result.confidence}% confidence`}
-                    color={result.confidence > 90 ? 'success' : 'warning'}
+                    color={result.confidence > 90 ? "success" : "warning"}
                     size="small"
                   />
                 </Box>
-                
-                <Typography variant="body2" className="text-gray-600 dark:text-gray-300">
+
+                <Typography
+                  variant="body2"
+                  className="text-gray-600 dark:text-gray-300"
+                >
                   {result.summary}
                 </Typography>
 
@@ -116,7 +128,7 @@ const ResearchExtension: React.FC = () => {
                       {result.timestamp}
                     </Typography>
                   </Box>
-                  
+
                   <Box className="flex gap-2">
                     <Button
                       size="small"
@@ -179,23 +191,32 @@ const ResearchExtension: React.FC = () => {
             </Box>
           </ModernCard>
         </Grid>
-        
+
         <Grid item xs={12} md={4}>
           <ModernCard title="Saved Searches">
             <Box className="space-y-2">
-              <Typography variant="body2" className="text-gray-600 dark:text-gray-300">
+              <Typography
+                variant="body2"
+                className="text-gray-600 dark:text-gray-300"
+              >
                 • Ransomware Campaigns
               </Typography>
-              <Typography variant="body2" className="text-gray-600 dark:text-gray-300">
+              <Typography
+                variant="body2"
+                className="text-gray-600 dark:text-gray-300"
+              >
                 • APT Group Activities
               </Typography>
-              <Typography variant="body2" className="text-gray-600 dark:text-gray-300">
+              <Typography
+                variant="body2"
+                className="text-gray-600 dark:text-gray-300"
+              >
                 • Zero-day Exploits
               </Typography>
             </Box>
           </ModernCard>
         </Grid>
-        
+
         <Grid item xs={12} md={4}>
           <ModernCard title="Research Stats">
             <Box className="space-y-2">
