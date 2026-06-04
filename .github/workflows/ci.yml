@@ -27,6 +27,14 @@ jobs:
 
       - name: Run tests (Vitest)
         run: npx vitest run --environment jsdom --dir src
+
+      - name: Codacy analysis
+        if: secrets.CODACY_PROJECT_TOKEN != ''
+        uses: codacy/codacy-analysis-action@v4
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 name: CI
 on: [push, pull_request]
 jobs:
