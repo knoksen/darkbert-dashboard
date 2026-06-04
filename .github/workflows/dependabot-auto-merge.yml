@@ -1,0 +1,16 @@
+name: Dependabot Auto-merge
+
+on:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  enable-automerge:
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
+    steps:
+      - name: Enable pull request automerge (squash)
+        uses: peter-evans/enable-pull-request-automerge@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          merge-method: squash
