@@ -1,4 +1,33 @@
 name: CI
+
+on:
+  push:
+    branches: [ main, 'training/**' ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: TypeScript check / Build
+        run: npm run build
+
+      - name: Run tests (Vitest)
+        run: npx vitest run --environment jsdom --dir src
+name: CI
 on: [push, pull_request]
 jobs:
   build:
