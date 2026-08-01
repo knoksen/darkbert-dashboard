@@ -1,11 +1,6 @@
-﻿import React from "react";
-import DashboardChart from "@/components/DashboardChart";
+﻿﻿import React from "react";
+import UnrealMetaHumanDashboard from "@/components/UnrealMetaHumanDashboard";
 
 export default function Dashboard() {
-  return (
-    <div>
-      <h1 className="text-2xl font-bold mb-4">Overview</h1>
-      <DashboardChart />
-    </div>
-  );
+  return <UnrealMetaHumanDashboard />;
 }

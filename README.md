@@ -1,70 +1,180 @@
 # DarkBERT Dashboard
 
-A web-based dashboard for visualizing and monitoring DarkBERT model performance and outputs.
+[![Version](https://img.shields.io/badge/version-1.1.0-blue.svg)](https://github.com/knoksen/darkbert-dashboard/releases/tag/v1.1.0)
+[![License](https://img.shields.io/badge/license-Apache%202.0-green.svg)](LICENSE)
+[![Build](https://img.shields.io/badge/build-verified-brightgreen.svg)](#quickstart)
+[![Docs](https://img.shields.io/badge/docs-quickstart-orange.svg)](#quickstart)
 
-## Tech Stack
+A modern dashboard for inspecting DarkBERT model activity, metrics, and inference outputs with a React/Vite frontend and FastAPI backend.
 
-- **Frontend**: React (Vite + Tailwind CSS)
-- **Backend**: FastAPI (Python)
-- **Data Storage**: SQLite / Postgres (configurable)
-- **Visualization**: Recharts
-- **Containerization**: Docker & Docker Compose
+Quick links: [Quickstart](#quickstart) • [Docker](#docker-quickstart) • [Desktop launcher](#desktop-launcher) • [Release notes](https://github.com/knoksen/darkbert-dashboard/releases)
 
 ## Usage Disclaimer
 
-The `knoksen/darkbert-approved` model is trained on data collected from the dark
-web. You can find more details on the model card at
-[Hugging Face](https://huggingface.co/knoksen/darkbert-approved) along with the
-license (currently Apache 2.0). Because of the nature of its training data,
-use of the model may have ethical or legal implications depending on your
-jurisdiction and intended purpose. Review the license and model card before
-deploying it in production.
+The model referenced by this project is trained on data collected from the dark web. Review the model card and license before deploying it in production.
 
-## Getting Started
+## Features
 
-Install the frontend and backend dependencies:
+- Interactive metrics and dashboard views
+- FastAPI prediction and embedding endpoints
+- Docker-based local development workflow
+- Desktop launcher support for local development environments
+
+## Quickstart
+
+### 1. Install prerequisites
+
+- Node.js 18+
+- npm 9+
+- Python 3.11+
+- Docker (optional, for containerized runs)
+
+### 2. Install dependencies
 
 ```bash
 npm install
 pip install -r requirements.txt
 ```
 
-Copy the example environment file and update the environment variables:
+### 3. Configure environment variables
 
 ```bash
 cp .env.example .env
-# edit .env and set values such as
-# HUGGINGFACE_HUB_TOKEN=your_token_here
-# VITE_API_BASE_URL=http://localhost:8000
-# VITE_DARK_MODE=false
 ```
 
-Start the frontend development server:
+Set at least:
+
+- `HUGGINGFACE_HUB_TOKEN=your_token_here`
+- `VITE_API_BASE_URL=http://localhost:8000`
+- `VITE_DARK_MODE=false`
+
+### 4. Run the stack
+
+Start the backend in one terminal:
+
+```bash
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+Start the frontend in another terminal:
 
 ```bash
 npm run dev
 ```
 
-Run the FastAPI backend in another terminal while the frontend is running:
+Open the dashboard at `http://localhost:3000` (or the Vite port shown in the terminal).
+
+## Docker Quickstart
 
 ```bash
-uvicorn app.main:app --reload
+docker compose up --build
 ```
 
-### Docker Compose
+Then visit:
 
-Make sure you have created a `.env` file containing the following variables:
+- Dashboard: `http://localhost:3000`
+- Backend API: `http://localhost:8000`
 
-- `MODEL_NAME`
-- `HUGGINGFACE_HUB_TOKEN`
-- `VITE_API_BASE_URL`
-- `VITE_DARK_MODE`
+To stop the stack:
 
-Then, build and start both services:
 ```bash
-docker-compose up --build
+docker compose down
 ```
 
+## Desktop Launcher
+
+A desktop installation helper is included at [scripts/install-desktop.sh](scripts/install-desktop.sh). It creates a launcher entry for Linux desktop environments so the project can be started from the application menu.
+
+```bash
+bash scripts/install-desktop.sh
+```
+
+## Common Commands
+
+```bash
+npm run dev      # start the Vite development server
+npm run build    # build production assets to dist/
+npm run preview  # preview the build locally
+npm run lint     # lint the TypeScript frontend
+npm run test     # run the Vitest suite
+```
+
+## Environment Variables
+
+| Variable | Used by | Example | Purpose |
+|---|---|---|---|
+| `VITE_API_BASE_URL` | Frontend | `http://localhost:8000` | Base URL used by the frontend API client. |
+| `VITE_DARK_MODE` | Frontend | `false` | Default appearance for the dashboard UI. |
+| `MODEL_NAME` | Backend/runtime | `knoksen/darkbert-approved` | Model identifier used by the backend. |
+| `HUGGINGFACE_HUB_TOKEN` | Backend/runtime | `hf_xxx...` | Authentication token for model access. |
+
+## Build and Deploy
+
+### Frontend deployment
+
+```bash
+npm run build
+```
+
+Deploy the generated `dist/` folder to any static host or CDN, and ensure `VITE_API_BASE_URL` points to the deployed backend.
+
+### Backend deployment
+
+```bash
+uvicorn app.main:app --host 0.0.0.0 --port 8000
+```
+
+## API Quick Reference
+
+- `POST /predict`
+- `POST /embeddings`
+- `POST /embeddings/reduce`
+- `GET /metrics`
+- `GET /confusion`
+
+## Troubleshooting
+
+- If the frontend reports a network error, confirm the backend is running and `VITE_API_BASE_URL` is correct.
+- If Docker services cannot be reached, check for port conflicts on `3000` and `8000`.
+- After changing environment variables, restart the relevant process.
+
+  ```bash
+  docker compose logs -f
+  ```
+- Ensure compose is using the intended env file and values.
+
+## Build fails on frontend
+
+- Reinstall dependencies:
+  ```bash
+  npm ci
+  ```
+- Then retry:
+  ```bash
+  npm run build
+  ```
+
+## Backend startup fails due to model/auth issues
+
+- Verify `HUGGINGFACE_HUB_TOKEN` is set and valid.
+- Verify `MODEL_NAME` points to an accessible model.
+- Confirm outbound network access to model hosting.
+
+## API returns timeout errors in frontend
+
+- Backend may be overloaded or still initializing model artifacts.
+- Retry after backend warm-up.
+- Check backend logs for long inference duration or failures.
+
+---
+
+## Contribution Guidelines
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development workflow, code style, testing, and pull request requirements.
+
+## Security
+
+For responsible disclosure and security policy, see [SECURITY.md](SECURITY.md).
 
 ## Unity Desktop App
 
@@ -91,7 +201,7 @@ elements from `Dashboard.uxml` to the script fields through the inspector. Make
 sure `backend_config.json` resides under `StreamingAssets` so the runtime can
 resolve the backend URL.
 
-#### Configuration
+### Configuration
 
 The backend URL is loaded in the following order:
 
@@ -99,8 +209,6 @@ The backend URL is loaded in the following order:
 2. `Assets/StreamingAssets/backend_config.json` with a `base_url` field.
 3. `http://localhost:8000` as a fallback.
 
-
-
 ## Advanced Structure and Deployment
 
-For a detailed example of scaffolding the project and deploying with Docker, see [docs/advanced_structure_and_deployment.md](docs/advanced_structure_and_deployment.md).
+For a detailed example of scaffolding the project and deployment-oriented structure notes, see [docs/advanced_structure_and_deployment.md](docs/advanced_structure_and_deployment.md).

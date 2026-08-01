@@ -1,3 +1,352 @@
 ﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --ue-bg-1: #050816;
+  --ue-bg-2: #0b122b;
+  --ue-glass: rgba(16, 24, 48, 0.55);
+  --ue-border: rgba(118, 164, 255, 0.28);
+  --ue-text: #dbeafe;
+  --ue-muted: #9fb3d9;
+}
+
+.ue-root {
+  position: relative;
+  min-height: 100%;
+  color: var(--ue-text);
+  padding: 0.5rem;
+  overflow: hidden;
+}
+
+.ue-root::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(56, 189, 248, 0.22), transparent 35%),
+    radial-gradient(circle at 80% 60%, rgba(167, 139, 250, 0.2), transparent 40%),
+    linear-gradient(140deg, var(--ue-bg-1), var(--ue-bg-2));
+  z-index: 0;
+  animation: ueDrift 18s ease-in-out infinite alternate;
+}
+
+.ue-bg-orb {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(44px);
+  opacity: 0.35;
+  z-index: 0;
+}
+
+.ue-bg-orb-one {
+  width: 220px;
+  height: 220px;
+  background: #22d3ee;
+  top: 40px;
+  left: -40px;
+}
+
+.ue-bg-orb-two {
+  width: 260px;
+  height: 260px;
+  background: #8b5cf6;
+  right: -70px;
+  bottom: 30px;
+}
+
+.ue-hero,
+.ue-grid,
+.ue-panel {
+  position: relative;
+  z-index: 1;
+}
+
+.ue-hero {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 1.25rem;
+  padding: 1.4rem;
+  border-radius: 20px;
+  margin-bottom: 1.25rem;
+}
+
+.ue-kicker {
+  font-size: 0.78rem !important;
+  letter-spacing: 0.12em;
+  color: #93c5fd;
+  margin-bottom: 0.5rem !important;
+}
+
+.ue-title {
+  font-size: clamp(1.5rem, 3vw, 2.4rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.1 !important;
+  margin-bottom: 0.6rem !important;
+}
+
+.ue-subtitle {
+  color: var(--ue-muted);
+  max-width: 70ch;
+  margin-bottom: 0.9rem !important;
+}
+
+.ue-chip-row {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.ue-chip-row-secondary {
+  margin-top: 0.7rem;
+}
+
+.ue-chip {
+  background: rgba(148, 163, 184, 0.15) !important;
+  color: #bfdbfe !important;
+  border: 1px solid rgba(148, 163, 184, 0.3) !important;
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.ue-chip:hover {
+  transform: translateY(-1px);
+  border-color: rgba(125, 211, 252, 0.5) !important;
+  box-shadow: 0 4px 16px rgba(56, 189, 248, 0.18);
+}
+
+.ue-chip-health {
+  font-weight: 700 !important;
+}
+
+.ue-telemetry-status {
+  margin-left: auto;
+}
+
+.ue-glass {
+  background: var(--ue-glass);
+  border: 1px solid var(--ue-border);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 32px rgba(2, 6, 23, 0.35);
+}
+
+.ue-scanline::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(147, 197, 253, 0.05) 3px
+  );
+  mix-blend-mode: screen;
+}
+
+.ue-avatar-card {
+  border-radius: 16px;
+  padding: 1rem;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.ue-avatar-ring {
+  width: 130px;
+  height: 130px;
+  border-radius: 999px;
+  border: 2px solid rgba(147, 197, 253, 0.55);
+  display: grid;
+  place-items: center;
+  margin: 0.8rem 0;
+  animation: ueSpin 12s linear infinite;
+}
+
+.ue-avatar-core {
+  width: 74px;
+  height: 74px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at 30% 30%, #67e8f9, #4338ca);
+  color: white;
+}
+
+.ue-avatar-name {
+  font-weight: 700 !important;
+  margin-bottom: 0.25rem !important;
+}
+
+.ue-avatar-meta {
+  color: var(--ue-muted);
+  font-size: 0.8rem !important;
+}
+
+.ue-glow {
+  box-shadow:
+    0 0 0 1px rgba(147, 197, 253, 0.25),
+    0 0 24px rgba(56, 189, 248, 0.22),
+    0 0 40px rgba(99, 102, 241, 0.12);
+}
+
+.ue-card {
+  border-radius: 14px;
+  padding: 1rem;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.ue-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(2, 6, 23, 0.45);
+}
+
+.ue-card-label {
+  color: var(--ue-muted);
+  font-size: 0.86rem !important;
+  margin-bottom: 0.3rem !important;
+}
+
+.ue-card-value {
+  font-size: 1.4rem !important;
+  font-weight: 800 !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.ue-panel {
+  border-radius: 16px;
+  padding: 1rem;
+}
+
+.ue-panel-title {
+  font-weight: 700 !important;
+  margin-bottom: 0.9rem !important;
+}
+
+.ue-telemetry-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.ue-telemetry-item {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  background: rgba(148, 163, 184, 0.1);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 12px;
+  padding: 0.75rem;
+  transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.ue-telemetry-label {
+  color: var(--ue-muted);
+  font-size: 0.78rem !important;
+}
+
+.ue-telemetry-value {
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+}
+
+.ue-timeline {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.ue-timeline-item {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 0.55rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+  background: rgba(148, 163, 184, 0.1);
+  border: 1px solid transparent;
+  transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.ue-timeline-item:hover {
+  background: rgba(148, 163, 184, 0.14);
+  border-color: rgba(147, 197, 253, 0.25);
+}
+
+.ue-time {
+  color: #93c5fd;
+  font-weight: 700 !important;
+  font-size: 0.8rem !important;
+}
+
+.ue-event {
+  font-weight: 600 !important;
+  font-size: 0.88rem !important;
+}
+
+.ue-tag {
+  color: var(--ue-muted);
+  font-size: 0.75rem !important;
+}
+
+@keyframes ueDrift {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(0, -12px, 0) scale(1.02); }
+}
+
+@keyframes ueSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.ue-status-optimal {
+  border-color: rgba(52, 211, 153, 0.38) !important;
+}
+
+.ue-status-stable {
+  border-color: rgba(125, 211, 252, 0.34) !important;
+}
+
+.ue-status-watch {
+  border-color: rgba(251, 191, 36, 0.45) !important;
+}
+
+.ue-status-critical {
+  border-color: rgba(244, 63, 94, 0.5) !important;
+}
+
+.ue-status-watch .ue-card-value,
+.ue-status-watch .ue-telemetry-value {
+  color: #fde68a;
+}
+
+.ue-status-critical .ue-card-value,
+.ue-status-critical .ue-telemetry-value {
+  color: #fda4af;
+}
+
+@media (max-width: 960px) {
+  .ue-root {
+    padding: 0.25rem;
+  }
+
+  .ue-hero {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .ue-telemetry-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ue-root::before,
+  .ue-avatar-ring,
+  .ue-card,
+  .ue-chip,
+  .ue-timeline-item {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+  }
+}
